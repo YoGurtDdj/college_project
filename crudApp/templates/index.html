@@ -1,0 +1,28 @@
+{% extends 'base.html'%}
+
+{% block title %}Главная страница{% endblock %}
+
+{% block content %}
+    <main class="main">
+        <div id="main-content" class="container mb-10">
+            <h1 class="title">Welcome to my web app</h1>
+            <p class='text'>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Modi minus vitae fugiat libero explicabo! Libero distinctio impedit facere harum doloremque. Officiis quibusdam hic consequuntur ipsa dolore autem amet aspernatur incidunt.</p>
+            <a href="#" class="primary-button">Read</a>
+        </div>
+        <div class="container">
+            <h2 class="title">Last News</h2>
+            {% for post in posts %}
+            <div class="card">
+                <div class="card-body">
+                    <h3>{{ post.title }}</h3>
+                    <h4>{{ post.postDate }}</h4>
+                    <p>{{ post.content|truncatewords:12 }}</p>
+                    <a href="{% url 'postDetail' pk=post.pk %}" class="primary-button">Read</a>
+                </div>
+            </div>
+            {% endfor %}
+
+
+        </div>
+    </main>
+{% endblock %}
